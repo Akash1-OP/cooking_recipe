@@ -15,7 +15,7 @@
       "type": "string",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "blocks"
     },
     "cuisine": {
@@ -71,7 +71,7 @@
       "required": true,
       "default": false
     },
-    "auther": {
+    "author": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
@@ -92,13 +92,13 @@
     "tips": {
       "type": "json"
     },
-    "subscriptios": {
+    "substitutions": {
       "type": "json"
     },
-    "save_recipes": {
+    "saved_recipes": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::save-recipe.save-recipe",
+      "target": "api::saved-recipe.saved-recipe",
       "mappedBy": "recipe"
     }
   }

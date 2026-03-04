@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * save-recipe service
+ * pantr-item service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::save-recipe.save-recipe');
+module.exports = createCoreService('api::pantr-item.pantr-item');

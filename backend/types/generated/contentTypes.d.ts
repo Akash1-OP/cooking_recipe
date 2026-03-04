@@ -467,12 +467,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPantryItemPantryItem extends Struct.CollectionTypeSchema {
-  collectionName: 'pantry_items';
+export interface ApiPantrItemPantrItem extends Struct.CollectionTypeSchema {
+  collectionName: 'pantr_items';
   info: {
-    displayName: 'pantry Item';
-    pluralName: 'pantry-items';
-    singularName: 'pantry-item';
+    displayName: 'pantr Item';
+    pluralName: 'pantr-items';
+    singularName: 'pantr-item';
   };
   options: {
     draftAndPublish: true;
@@ -485,7 +485,7 @@ export interface ApiPantryItemPantryItem extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::pantry-item.pantry-item'
+      'api::pantr-item.pantr-item'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
@@ -512,7 +512,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    auther: Schema.Attribute.Relation<
+    author: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
@@ -549,7 +549,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
         'other',
       ]
     >;
-    Description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.Blocks;
     imageUrl: Schema.Attribute.String;
     ingredients: Schema.Attribute.JSON & Schema.Attribute.Required;
     instructions: Schema.Attribute.JSON & Schema.Attribute.Required;
@@ -565,12 +565,12 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     nutrition: Schema.Attribute.JSON;
     prepTime: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    save_recipes: Schema.Attribute.Relation<
+    saved_recipes: Schema.Attribute.Relation<
       'oneToMany',
-      'api::save-recipe.save-recipe'
+      'api::saved-recipe.saved-recipe'
     >;
     servings: Schema.Attribute.Integer;
-    subscriptios: Schema.Attribute.JSON;
+    substitutions: Schema.Attribute.JSON;
     tips: Schema.Attribute.JSON;
     titel: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -579,12 +579,12 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSaveRecipeSaveRecipe extends Struct.CollectionTypeSchema {
-  collectionName: 'save_recipes';
+export interface ApiSavedRecipeSavedRecipe extends Struct.CollectionTypeSchema {
+  collectionName: 'saved_recipes';
   info: {
-    displayName: 'save Recipe';
-    pluralName: 'save-recipes';
-    singularName: 'save-recipe';
+    displayName: 'Saved Recipe';
+    pluralName: 'saved-recipes';
+    singularName: 'saved-recipe';
   };
   options: {
     draftAndPublish: true;
@@ -596,7 +596,7 @@ export interface ApiSaveRecipeSaveRecipe extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::save-recipe.save-recipe'
+      'api::saved-recipe.saved-recipe'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1084,18 +1084,18 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    firstName: Schema.Attribute.String;
-    imageUrl: Schema.Attribute.Text;
-    lastName: Schema.Attribute.String;
+    firstName: Schema.Attribute.String & Schema.Attribute.Required;
+    imageUrl: Schema.Attribute.String;
+    lastName: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
-    pantry_items: Schema.Attribute.Relation<
+    pantr_items: Schema.Attribute.Relation<
       'oneToMany',
-      'api::pantry-item.pantry-item'
+      'api::pantr-item.pantr-item'
     >;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
@@ -1110,11 +1110,11 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    save_recipes: Schema.Attribute.Relation<
+    saved_recipes: Schema.Attribute.Relation<
       'oneToMany',
-      'api::save-recipe.save-recipe'
+      'api::saved-recipe.saved-recipe'
     >;
-    subscriptioTier: Schema.Attribute.Enumeration<['free', 'pro']>;
+    subscriptionTier: Schema.Attribute.Enumeration<['free', 'pro']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1139,9 +1139,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::pantry-item.pantry-item': ApiPantryItemPantryItem;
+      'api::pantr-item.pantr-item': ApiPantrItemPantrItem;
       'api::recipe.recipe': ApiRecipeRecipe;
-      'api::save-recipe.save-recipe': ApiSaveRecipeSaveRecipe;
+      'api::saved-recipe.saved-recipe': ApiSavedRecipeSavedRecipe;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

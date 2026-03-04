@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "save_recipes",
+  "collectionName": "saved_recipes",
   "info": {
-    "singularName": "save-recipe",
-    "pluralName": "save-recipes",
-    "displayName": "save Recipe"
+    "singularName": "saved-recipe",
+    "pluralName": "saved-recipes",
+    "displayName": "Saved Recipe"
   },
   "options": {
     "draftAndPublish": true
@@ -18,13 +18,13 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "save_recipes"
+      "inversedBy": "saved_recipes"
     },
     "recipe": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::recipe.recipe",
-      "inversedBy": "save_recipes"
+      "inversedBy": "saved_recipes"
     }
   }
 }

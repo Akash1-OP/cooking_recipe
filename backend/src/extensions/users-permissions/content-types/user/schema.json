@@ -72,38 +72,40 @@
       "unique": true
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "imageUrl": {
-      "type": "text"
+      "type": "string"
     },
-    "subscriptioTier": {
+    "subscriptionTier": {
       "type": "enumeration",
       "enum": [
         "free",
         "pro"
       ]
     },
-    "pantry_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pantry-item.pantry-item",
-      "mappedBy": "owner"
-    },
-    "save_recipes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::save-recipe.save-recipe",
-      "mappedBy": "user"
-    },
     "recipes": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::recipe.recipe",
-      "mappedBy": "auther"
+      "mappedBy": "author"
+    },
+    "pantr_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pantr-item.pantr-item",
+      "mappedBy": "owner"
+    },
+    "saved_recipes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::saved-recipe.saved-recipe",
+      "mappedBy": "user"
     }
   }
 }

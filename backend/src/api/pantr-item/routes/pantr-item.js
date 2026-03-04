@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * pantry-item router
+ * pantr-item router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::pantry-item.pantry-item');
+module.exports = createCoreRouter('api::pantr-item.pantr-item');
